@@ -1,0 +1,45 @@
+@import './base.scss';
+
+.checkbox-male-container{
+  margin: 1rem 1rem 0 1rem;
+}
+
+.checkbox-female-container {
+  margin: 1rem 1rem 0 1rem;
+}
+
+.title{
+  font-size: $font-size-small-title;
+}
+
+.gender-text{
+  font-size: $font-size-small-title;
+}
+
+.yearMonth-text{
+  font-size: $font-size-small-title;
+  margin-bottom: 1rem;
+}
+
+  .generate-text {
+    font-size: $font-size-small-title;
+  }
+
+  .generate-result {
+    margin: 1rem;
+    font-size: 2rem;
+    color: $main-color;
+  }
+
+  .gpt-img{
+    margin: 0.5rem;
+  }
+
+  .chatgpt-text {
+    font-size: $font-size-small;
+  }
+
+  .generate-btn{
+    margin: 0.5rem 0.5rem 0 0.5rem;
+  }
+
