@@ -5,18 +5,14 @@ export default function GenderSetting() {
     <section className="gender">
       <div className="gender-container">
         <div className="gender-text text-center">Gender</div>
-        <div className="checkbox-container d-flex justify-content-between">
-          <div className="checkbox-male-container d-flex flex-column justify-content-center align-items-center">
-            <label htmlFor="checkbox-male">
-              <input type="checkbox" name="checkboxMale" className="cursor-pointer"/>
-            </label>
-            <div className="checkbox-male-text">male</div>
+        <div className="radio-container d-flex justify-content-between">
+          <div className="radio-male-container d-flex flex-column justify-content-center align-items-center">
+            <input type="radio" name="gender" defaultValue="male"/>
+            <div className="checkbox-male-text">Male</div>
           </div>
-          <div className="checkbox-female-container d-flex flex-column justify-content-center align-items-center">
-            <label htmlFor="checkbox-female">
-              <input type="checkbox" name="checkboxFemale" className="cursor-pointer"/>
-            </label>
-            <div className="checkbox-female-text">female</div>
+          <div className="radio-female-container d-flex flex-column justify-content-center align-items-center">
+            <input type="radio" name="gender" defaultValue="female"/>
+            <div className="checkbox-male-text">Female</div>
           </div>
         </div>
       </div>
