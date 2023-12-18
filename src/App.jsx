@@ -1,4 +1,5 @@
-import NameSetting from "./components/NameSetting"
+import NameSetting from "./components/NameSetting/NameSetting";
+
 
 export default function App() {
   
