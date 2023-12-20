@@ -10,22 +10,26 @@ const baseUrl = 'http://localhost:8080';
 
 export default function NameSetting() {
 
-// const response = axios.get(`${baseUrl}/chatgpt/getNames`);
-axios.get(`http://localhost:8080/chatgpt/getNames`)
+// 修改api header
+axios.defaults.headers = {
+  'Content-Type': 'application/json; charset=utf-8'
+};
+
+axios.get(`http://localhost:8080`)
   .then(function (response){
-    console.log(response.data)
+    console.log(response)
   })
   .catch(function (error) {
     console.log(error)
   })
 
-axios.get(`https://randomuser.me/api/?results=3&gender=female`)
-  .then(function (response){
-    console.log(response.data.results[0])
-  })
-  .catch(function (error) {
-    console.log(error)
-  })
+// axios.get(`https://randomuser.me/api/?results=3&gender=female`)
+//   .then(function (response){
+//     console.log(response.data)
+//   })
+//   .catch(function (error) {
+//     console.log(error)
+//   })
 
 
   // const [generatedName, setGenerateName] = useState('wait...');
