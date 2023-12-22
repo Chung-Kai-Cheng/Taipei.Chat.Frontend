@@ -31,6 +31,7 @@ export default function NameSetting() {
           setGeneratedName(err.response.data);
         } else {
           console.log("An error occurred.");
+          setGeneratedName("An error occurred.");
         }
       }
     };
