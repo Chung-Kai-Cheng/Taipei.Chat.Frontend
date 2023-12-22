@@ -24,8 +24,14 @@ export default function NameSetting() {
         console.log(result);
         setGeneratedName(result);
       } catch (err) {
-        setGeneratedName(err.response.data.Message);
-        console.log(err.response.data.Message);
+        if (err.response && err.response.data.Status == 400) {
+          setGeneratedName(err.response.data.Message);
+          console.log(err.response.status);
+        } else if (err.response && err.response.data) {
+          setGeneratedName(err.response.data);
+        } else {
+          console.log("An error occurred.");
+        }
       }
     };
 
