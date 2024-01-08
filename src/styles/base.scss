@@ -1,11 +1,11 @@
 $main-color: DarkSeaGreen;
-$font-color: #1F2D3D;
+$font-color: #1f2d3d;
 
 $font-size-small-title: 1.25rem;
 $font-size-small: 0.75rem;
 
-body{
-  font-family: 'Noto Sans TC',sans-serif;
+body {
+  font-family: "Noto Sans TC", sans-serif;
   height: 100%;
 }
 
@@ -13,7 +13,7 @@ body{
   cursor: pointer;
 }
 
-.h100{
+.h100 {
   height: 100%;
 }
 
@@ -57,7 +57,7 @@ body{
   justify-content: space-between;
 }
 
-.justify-content-evenly{
+.justify-content-evenly {
   justify-content: space-evenly;
 }
 
@@ -129,12 +129,12 @@ header {
   color: $font-color;
 }
 
-main{
+main {
   flex: 1;
   // height: 100vh;
 }
 
-button{
+button {
   margin: 1rem;
   padding: 1rem;
   background-color: $main-color;
@@ -143,5 +143,3 @@ button{
   border-radius: 1rem;
   font-size: 1rem;
 }
-
-
