@@ -6,7 +6,7 @@ import "../../styles/name-setting.scss";
 import BirthSetting from "./BirthSetting";
 import GenderSetting from "./GenderSetting";
 
-const baseUrl = "http://localhost:8888";
+const baseUrl = "http://localhost:8080";
 
 export default function NameSetting() {
   const [generatedName, setGeneratedName] = useState("");
