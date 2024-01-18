@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../Header/Header";
 import "../../styles/name-setting.scss";
@@ -11,6 +12,8 @@ export default function NameSetting() {
   const [generatedName, setGeneratedName] = useState("");
   const [gender, setGender] = useState("");
   const [birthdate, setBirthdate] = useState("");
+  // 使用 useNavigate 來獲取 navigate 對象
+  const navigate = useNavigate();
 
   useEffect(() => {
     setGeneratedName("生成中...");
@@ -38,6 +41,11 @@ export default function NameSetting() {
     fetchData();
   }, [gender, birthdate]);
 
+  // 點擊後導向/Chatroom
+  const handleStartChatting = () => {
+    navigate("/Chatroom");
+  };
+
   return (
     <div className="container">
       <Header title="Name setting" />
@@ -57,7 +65,10 @@ export default function NameSetting() {
         </div>
       </main>
 
-      <div className="start-chatting-btn cursor-pointer">
+      <div
+        className="start-chatting-btn cursor-pointer"
+        onClick={handleStartChatting}
+      >
         <h1>Start chatting!</h1>
       </div>
     </div>

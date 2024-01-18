@@ -8,7 +8,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<NameSetting />} />
-          <Route path="Chatroom" element={ <Chatroom/>} />
+          <Route path="/Chatroom" element={<Chatroom />} />
         </Routes>
       </BrowserRouter>
     </>
