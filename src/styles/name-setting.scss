@@ -1,10 +1,10 @@
-@import './base.scss';
+@import "./base.scss";
 
 .title {
   font-size: $font-size-small-title;
 }
 
-.radio-male-container{
+.radio-male-container {
   margin: 1rem 1rem 0 1rem;
 }
 
@@ -12,22 +12,37 @@
   margin: 1rem 1rem 0 1rem;
 }
 
-.gender-text{
+.gender-text {
   font-size: $font-size-small-title;
 }
 
-.yearMonth-text{
+.yearMonth-text {
   font-size: $font-size-small-title;
   margin-bottom: 1rem;
 }
 
-  .generate-text {
-    font-size: $font-size-small-title;
-  }
+.generate-text {
+  font-size: $font-size-small-title;
+}
 
-  .generate-result {
-    height: 2rem;
-    margin: 1rem;
-    font-size: 2rem;
-    color: $main-color;
+.generate-result {
+  height: 2rem;
+  margin: 1rem;
+  font-size: 2rem;
+  color: $main-color;
+}
+
+.start-chatting-btn {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: $main-color;
+  color: $font-color;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1rem;
+  transition: background-color 0.5s, color 0.5s;
+  text-align: center;
+  &:hover {
+    background-color: $main-hover-color;
   }
+}

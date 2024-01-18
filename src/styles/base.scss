@@ -135,16 +135,4 @@ main {
   // height: 100vh;
 }
 
-button {
-  margin: 1rem;
-  padding: 1rem;
-  background-color: $main-color;
-  color: $font-color;
-  border: none;
-  border-radius: 1rem;
-  font-size: 1rem;
-  transition: background-color 0.5s, color 0.5s;
-  &:hover {
-    background-color: $main-hover-color;
-  }
-}
+

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 import "../../styles/name-setting.scss";
 import BirthSetting from "./BirthSetting";
 import GenderSetting from "./GenderSetting";
@@ -58,7 +57,9 @@ export default function NameSetting() {
         </div>
       </main>
 
-      <Footer>Start chatting!</Footer>
+      <div className="start-chatting-btn cursor-pointer">
+        <h1>Start chatting!</h1>
+      </div>
     </div>
   );
 }
