@@ -2,8 +2,12 @@ $main-color: DarkSeaGreen;
 $main-hover-color: Aquamarine;
 $font-color: #1f2d3d;
 
-$font-size-small-title: 1.25rem;
-$font-size-small: 0.75rem;
+$font-size-small-title: 1.5rem;
+$font-size-small: 1rem;
+
+html {
+  height: 100%;
+}
 
 body {
   font-family: "Noto Sans TC", sans-serif;
@@ -122,6 +126,7 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
 }
 
@@ -132,7 +137,6 @@ header {
 
 main {
   flex: 1;
-  // height: 100vh;
+  height: 100%;
+  overflow-y: scroll;
 }
-
-
