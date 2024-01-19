@@ -12,7 +12,7 @@ export default function BirthSetting({ setBirthdate }) {
     <section className="birth">
       <div className="date-container">
         <label htmlFor="yearMonth">
-          <div className="yearMonth-text text-center">Date of birth</div>
+          <div className="title">Date of birth</div>
           <input
             type="month"
             name="yearMonth"

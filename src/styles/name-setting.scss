@@ -1,34 +1,25 @@
 @import "./base.scss";
 
 .title {
-  font-size: $font-size-small-title;
+  padding: 1rem;
+  text-align: center;
+  line-height: 3rem;
+  font-size: $font-size-title;
 }
 
-.radio-male-container {
-  margin: 1rem 1rem 0 1rem;
-}
-
+.radio-male-container,
 .radio-female-container {
   margin: 1rem 1rem 0 1rem;
 }
 
-.gender-text {
-  font-size: $font-size-small-title;
-}
-
-.yearMonth-text {
-  font-size: $font-size-small-title;
-  margin-bottom: 1rem;
-}
-
-.generate-text {
+.checkbox-text {
   font-size: $font-size-small-title;
 }
 
 .generate-result {
   height: 2rem;
   margin: 1rem;
-  font-size: 2rem;
+  font-size: 3rem;
   color: $main-color;
 }
 
@@ -39,7 +30,7 @@
   color: $font-color;
   border: none;
   border-radius: 1rem;
-  font-size: 1rem;
+  font-size: $font-size-title;
   transition: background-color 0.5s, color 0.5s;
   text-align: center;
   &:hover {

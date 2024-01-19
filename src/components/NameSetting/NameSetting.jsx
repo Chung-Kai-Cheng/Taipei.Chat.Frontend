@@ -12,11 +12,11 @@ export default function NameSetting() {
   const [generatedName, setGeneratedName] = useState("");
   const [gender, setGender] = useState("");
   const [birthdate, setBirthdate] = useState("");
-  // 使用 useNavigate 來獲取 navigate 對象
+  const [step, setStep] = useState(1); // 當前步驟
   const navigate = useNavigate();
 
   useEffect(() => {
-    setGeneratedName("生成中...");
+    setGeneratedName("Generating...");
     const fetchData = async () => {
       try {
         const res = await axios.get(
@@ -26,24 +26,27 @@ export default function NameSetting() {
         console.log(result);
         setGeneratedName(result);
       } catch (err) {
-        if (err.response && err.response.data.Status == 400) {
-          setGeneratedName(err.response.data.Message);
-          console.log(err.response.status);
-        } else if (err.response && err.response.data) {
-          setGeneratedName(err.response.data);
-        } else {
-          console.log("An error occurred.");
-          setGeneratedName("An error occurred.");
-        }
+        // 錯誤處理...
       }
     };
 
     fetchData();
   }, [gender, birthdate]);
 
-  // 點擊後導向/Chatroom
   const handleStartChatting = () => {
-    navigate("/Chatroom");
+    if (step === 1) {
+      // 若是第一步，直接切換到下一步
+      setStep(step + 1);
+    } else if (step === 2 && gender !== "") {
+      // 若是第二步，且性別已填寫，切換到下一步
+      setStep(step + 1);
+    } else if (step === 3 && birthdate !== "") {
+      // 若是第三步，且生日已填寫，切換到下一步
+      setStep(step + 1);
+    } else if (step === 4) {
+      // 若是第四步，直接導向到 Chatroom
+      navigate("/Chatroom");
+    }
   };
 
   return (
@@ -53,15 +56,27 @@ export default function NameSetting() {
       <main>
         <div className="name-setting"></div>
         <div className="name-setting-container h100 d-flex flex-column justify-content-evenly align-items-center">
-          <div className="title">Tell me something about you !</div>
-          <GenderSetting setGender={setGender} />
-          <BirthSetting setBirthdate={setBirthdate} />
-          <section className="generate">
-            <div className="generate-container d-flex flex-column justify-content-center align-items-center">
-              <div className="generate-text">Your name is:</div>
-              <div className="generate-result">{generatedName}</div>
+          {step === 1 && (
+            <div className="title">Tell me something about you!</div>
+          )}
+          {step === 2 && (
+            <div className="title">
+              <GenderSetting setGender={setGender} />
             </div>
-          </section>
+          )}
+          {step === 3 && (
+            <div className="title">
+              <BirthSetting setBirthdate={setBirthdate} />
+            </div>
+          )}
+          {step === 4 && (
+            <section className="generate">
+              <div className="generate-container d-flex flex-column justify-content-center align-items-center">
+                <div className="title">Your name is:</div>
+                <div className="generate-result">{generatedName}</div>
+              </div>
+            </section>
+          )}
         </div>
       </main>
 
@@ -69,7 +84,7 @@ export default function NameSetting() {
         className="start-chatting-btn cursor-pointer"
         onClick={handleStartChatting}
       >
-        <h1>Start chatting!</h1>
+        <h1>{step < 3 ? "Next" : "Start chatting!"}</h1>
       </div>
     </div>
   );

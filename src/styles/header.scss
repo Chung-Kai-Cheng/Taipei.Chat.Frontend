@@ -1,8 +1,8 @@
-@import './base.scss';
+@import "./base.scss";
 
-header .text{
-    text-align: center;
-    margin: 1rem;
-    font-size: 1.5rem;
-    font-weight: 700;
+header .text {
+  text-align: center;
+  margin: 1rem;
+  font-size: $font-size-title;
+  font-weight: 700;
 }

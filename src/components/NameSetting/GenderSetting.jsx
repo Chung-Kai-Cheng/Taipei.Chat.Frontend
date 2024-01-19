@@ -11,7 +11,7 @@ export default function GenderSetting({ setGender }) {
   return (
     <section className="gender">
       <div className="gender-container">
-        <div className="gender-text text-center">Gender</div>
+        <div className="title">Gender</div>
         <div className="radio-container d-flex justify-content-between">
           <div className="radio-male-container d-flex flex-column justify-content-center align-items-center">
             <input
@@ -22,7 +22,7 @@ export default function GenderSetting({ setGender }) {
               checked={selectedGender === "male"}
               onChange={handleGenderChange}
             />
-            <div className="checkbox-male-text">Male</div>
+            <div className="checkbox-text">Male</div>
           </div>
           <div className="radio-female-container d-flex flex-column justify-content-center align-items-center">
             <input
@@ -33,7 +33,7 @@ export default function GenderSetting({ setGender }) {
               checked={selectedGender === "female"}
               onChange={handleGenderChange}
             />
-            <div className="checkbox-male-text">Female</div>
+            <div className="checkbox-text">Female</div>
           </div>
         </div>
       </div>
