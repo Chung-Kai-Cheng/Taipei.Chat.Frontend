@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 import Header from "./Header/Header";
 import "../styles/chatroom.scss";
 
 export default function Chatroom() {
   const [inputText, setInputText] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
+  const [generatedToken, setGeneratedToken] = useState("");
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    console.log("Token =", token);
+    setGeneratedToken(token);
+  }, []);
 
   const handleInputText = (event) => {
     setInputText(event.target.value);
