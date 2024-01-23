@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import axios from "axios";
 import Header from "../Header/Header";
 import "../../styles/name-setting.scss";
@@ -22,9 +23,11 @@ export default function NameSetting() {
         const res = await axios.get(
           `${baseUrl}/gemini/getNames?birthdate=${birthdate}&gender=${gender}`
         );
-        let result = res.data.Data.name;
-        console.log(result);
-        setGeneratedName(result);
+        let result = res.data.Data;
+        console.log(result.token);
+        // 將產生的token存入cookie
+        Cookies.set("token", result.token);
+        setGeneratedName(result.name);
       } catch (err) {
         if (err.response && err.response.data.Status == 400) {
           setGeneratedName(err.response.data.Message);
