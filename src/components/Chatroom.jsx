@@ -1,32 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { io } from "socket.io-client";
 import Header from "./Header/Header";
 import "../styles/chatroom.scss";
-import WebSocketProvider from "react-websocket";
 
 export default function Chatroom() {
   const [inputText, setInputText] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
+  const [generatedToken, setGeneratedToken] = useState("");
 
   useEffect(() => {
     const token = Cookies.get("token");
-    const socket = new WebSocketProvider({
-      headers: {
-        Authorization: token,
-      },
-    }).connect("ws://localhost:8080/ws");
-
-    socket.onmessage = (event) => {
-      const receivedMessage = event.data;
-
-      // 將 WebSocket 的訊息加入 chatHistory
-      setChatHistory((prevChatHistory) => [
-        ...prevChatHistory,
-        receivedMessage,
-      ]);
-    };
-
-    return () => socket.close();
+    console.log("token is ", token);
+    setGeneratedToken(token);
   }, []);
 
   const handleInputText = (event) => {
@@ -41,6 +27,20 @@ export default function Chatroom() {
       setInputText("");
     }
   };
+
+  const socket = io("http://localhost:8080/ws", {
+    extraHeaders: {
+      "Sec-WebSocket-Token": generatedToken,
+    },
+  });
+
+  socket.on("connect", () => {
+    console.log(socket.connected);
+  });
+
+  socket.on("disconnect", () => {
+    console.log(socket.connected);
+  });
 
   return (
     <div className="container">
