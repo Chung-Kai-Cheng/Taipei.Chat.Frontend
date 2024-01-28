@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import useWebSocket, { ReadyState } from "react-use-websocket";
 import Cookies from "js-cookie";
-import { io } from "socket.io-client";
 import Header from "./Header/Header";
 import "../styles/chatroom.scss";
 
@@ -8,12 +8,27 @@ export default function Chatroom() {
   const [inputText, setInputText] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const [generatedToken, setGeneratedToken] = useState("");
+  const { sendMessage, lastMessage, readyState } = useWebSocket(
+    "ws://localhost:8080/ws"
+  );
 
   useEffect(() => {
     const token = Cookies.get("token");
     console.log("token is ", token);
     setGeneratedToken(token);
   }, []);
+
+  console.log(generatedToken);
+
+  const connectionStatus = {
+    [ReadyState.CONNECTING]: "Connecting",
+    [ReadyState.OPEN]: "Open",
+    [ReadyState.CLOSING]: "Closing",
+    [ReadyState.CLOSED]: "Closed",
+    [ReadyState.UNINSTANTIATED]: "Uninstantiated",
+  }[readyState];
+
+  console.log(connectionStatus);
 
   const handleInputText = (event) => {
     setInputText(event.target.value);
@@ -27,20 +42,6 @@ export default function Chatroom() {
       setInputText("");
     }
   };
-
-  const socket = io("http://localhost:8080/ws", {
-    extraHeaders: {
-      "Sec-WebSocket-Token": generatedToken,
-    },
-  });
-
-  socket.on("connect", () => {
-    console.log(socket.connected);
-  });
-
-  socket.on("disconnect", () => {
-    console.log(socket.connected);
-  });
 
   return (
     <div className="container">
