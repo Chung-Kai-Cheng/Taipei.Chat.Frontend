@@ -48,18 +48,34 @@ export default function NameSetting() {
   }, [step]);
 
   const handleStartChatting = () => {
-    if (step === 1) {
-      // 若是第一步，直接切換到下一步
-      setStep(step + 1);
-    } else if (step === 2 && gender !== "") {
-      // 若是第二步，且性別已填寫，切換到下一步
-      setStep(step + 1);
-    } else if (step === 3 && birthdate !== "") {
-      // 若是第三步，且生日已填寫，切換到下一步
-      setStep(step + 1);
-    } else if (step === 4) {
-      // 若是第四步，直接導向到 Chatroom
-      navigate("/Chatroom");
+    switch (step) {
+      case 1:
+        // 若是第一步，直接切換到下一步
+        setStep(step + 1);
+        break;
+
+      case 2:
+        // 若是第二步，且性別已填寫，切換到下一步
+        if (gender !== "") {
+          setStep(step + 1);
+        }
+        break;
+
+      case 3:
+        // 若是第三步，且生日已填寫，切換到下一步
+        if (birthdate !== "") {
+          setStep(step + 1);
+        }
+        break;
+
+      case 4:
+        // 若是第四步，且已將token值存Cookies，則導向Chatroom
+        if (Cookies.get("token")) {
+          navigate("/Chatroom");
+        } else {
+          alert("You need to generate the name first!");
+        }
+        break;
     }
   };
 
