@@ -4,8 +4,6 @@ import Header from "./Header/Header";
 import "../styles/chatroom.scss";
 
 export default function Chatroom() {
-  const [inputText, setInputText] = useState("");
-  const [chatHistory, setChatHistory] = useState([]);
   const [generatedToken, setGeneratedToken] = useState("");
 
   useEffect(() => {
@@ -22,7 +20,7 @@ export default function Chatroom() {
 
     // 事件處理器 - 連接建立
     ws.onopen = (event) => {
-      console.log("WebSocket connected.");
+      console.log("WebSocket connected.", event);
     };
 
     // 事件處理器 - 接收訊息
@@ -32,7 +30,7 @@ export default function Chatroom() {
 
     // 事件處理器 - 連接關閉
     ws.onclose = (event) => {
-      console.log("WebSocket closed.");
+      console.log("WebSocket closed.", event);
     };
 
     // 事件處理器 - 連接錯誤
@@ -46,40 +44,14 @@ export default function Chatroom() {
     };
   }, [generatedToken]);
 
-  const handleInputText = (event) => {
-    setInputText(event.target.value);
-  };
-
-  const handleEnterPress = (event) => {
-    if (event.key === "Enter" && inputText.trim() !== "") {
-      // 將輸入的文字加入聊天歷史
-      setChatHistory([...chatHistory, inputText]);
-      // 清空輸入欄位
-      setInputText("");
-    }
-  };
-
   return (
     <div className="container">
       <Header title="Chatroom" />
       <main>
-        <div className="chat-space d-flex flex-column align-items-end">
-          {chatHistory.map((message, index) => (
-            <div className="chat-box" key={index}>
-              {message}
-            </div>
-          ))}
-        </div>
+        <div className="chat-space d-flex flex-column align-items-end"></div>
       </main>
       <footer className="type-place d-flex justify-content-between">
-        <input
-          type="text"
-          placeholder="say something"
-          className="chat-input"
-          value={inputText}
-          onChange={handleInputText}
-          onKeyDown={handleEnterPress}
-        />
+        <input type="text" placeholder="say something" className="chat-input" />
       </footer>
     </div>
   );
