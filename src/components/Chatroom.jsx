@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Cookies from "js-cookie";
 import Header from "./Header/Header";
 import "../styles/chatroom.scss";
 
 export default function Chatroom() {
-  const [generatedToken, setGeneratedToken] = useState("");
-
   useEffect(() => {
     const token = Cookies.get("token");
-    console.log("token is ", token);
-    setGeneratedToken(token);
-  }, []);
 
-  useEffect(() => {
     // 建立WebSocket連接
     const ws = new WebSocket(
-      `ws://localhost:8080/ws?Sec-WebSocket-Token=${generatedToken}`
+      `ws://localhost:8080/ws?Sec-WebSocket-Token=${token}`
     );
 
     // 事件處理器 - 連接建立
@@ -42,7 +36,7 @@ export default function Chatroom() {
     return () => {
       ws.close();
     };
-  }, [generatedToken]);
+  }, []);
 
   return (
     <div className="container">
