@@ -17,32 +17,35 @@ export default function NameSetting() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setGeneratedName("Generating...");
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          `${baseUrl}/gemini/getNames?birthdate=${birthdate}&gender=${gender}`
-        );
-        let result = res.data.Data;
-        console.log(result.token);
-        // 將產生的token存入cookie
-        Cookies.set("token", result.token);
-        setGeneratedName(result.name);
-      } catch (err) {
-        if (err.response && err.response.data.Status == 400) {
-          setGeneratedName(err.response.data.Message);
-          console.log(err.response.status);
-        } else if (err.response && err.response.data) {
-          setGeneratedName(err.response.data);
-        } else {
-          console.log("An error occurred.");
-          setGeneratedName("An error occurred.");
+    // 第四步才判斷是否產生錯誤
+    if (step === 4) {
+      setGeneratedName("Generating...");
+      const fetchData = async () => {
+        try {
+          const res = await axios.get(
+            `${baseUrl}/gemini/getNames?birthdate=${birthdate}&gender=${gender}`
+          );
+          let result = res.data.Data;
+          console.log(result.token);
+          // 將產生的token存入cookie
+          Cookies.set("token", result.token);
+          setGeneratedName(result.name);
+        } catch (err) {
+          if (err.response && err.response.data.Status == 400) {
+            setGeneratedName(err.response.data.Message);
+            console.log(err.response.status);
+          } else if (err.response && err.response.data) {
+            setGeneratedName(err.response.data);
+          } else {
+            console.log(err.message);
+            setGeneratedName(err.message);
+          }
         }
-      }
-    };
+      };
 
-    fetchData();
-  }, [gender, birthdate]);
+      fetchData();
+    }
+  }, [step]);
 
   const handleStartChatting = () => {
     if (step === 1) {
