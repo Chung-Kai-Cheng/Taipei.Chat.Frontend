@@ -4,7 +4,7 @@
   padding: 1rem;
   text-align: center;
   line-height: 3rem;
-  font-size: $font-size-title;
+  font-size: $second-title;
 }
 
 .radio-male-container,
@@ -13,28 +13,60 @@
 }
 
 .checkbox-text {
-  font-size: $font-size-small-title;
+  font-size: $text;
 }
 
 .generate-result {
   height: 2rem;
   margin: 1rem;
-  font-size: 3rem;
+  font-size: $title;
   color: $main-color;
 }
 
 .start-chatting-btn {
-  margin: 0 2rem 5rem 2rem;
+  margin: 0 2rem 2rem 2rem;
   padding: 1.5rem 1rem;
   color: $font-color;
   @include main-gradient;
   border: none;
   border-radius: 10rem;
-  font-size: $font-size-title;
+  font-size: $title;
   transition: background-color 0.5s, color 0.5s;
   text-align: center;
   &:hover {
     border-radius: 10rem;
     @include hover-gradient;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) and (min-height: 768px) {
+  .title {
+    font-size: $medium-second-title;
+  }
+  .checkbox-text {
+    font-size: $medium-text;
+  }
+  .generate-result {
+    font-size: $medium-title;
+  }
+  .start-chatting-btn {
+    margin: 0 15rem 5rem 15rem;
+    font-size: $medium-title;
+  }
+}
+
+@media screen and (min-width: 1024px) and (min-height: 768px) {
+  .title {
+    font-size: $large-second-title;
+  }
+  .checkbox-text {
+    font-size: $large-text;
+  }
+  .generate-result {
+    font-size: $large-title;
+  }
+  .start-chatting-btn {
+    margin: 0 22rem 5rem 22rem;
+    font-size: $large-title;
   }
 }

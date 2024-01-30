@@ -7,12 +7,22 @@ $main-color: #35bcff;
 }
 $font-color: #002a77;
 
-$font-size-title: 2rem;
-$font-size-small-title: 1.5rem;
-$font-size-small: 1rem;
+$title: 1.75rem;
+$second-title: 1.5rem;
+$text: 1.25rem;
+
+$medium-title: 2rem;
+$medium-second-title: 1.8rem;
+$medium-text: 1.5rem;
+
+$large-title: 2.5rem;
+$large-second-title: 2.25rem;
+$large-text: 2rem;
 
 html {
   height: 100%;
+  min-height: 320px;
+  min-width: 320px;
 }
 
 body {
@@ -38,7 +48,7 @@ body {
 }
 
 .d-inline-block {
-  display: inline-blockt;
+  display: inline-block;
 }
 
 .d-block {

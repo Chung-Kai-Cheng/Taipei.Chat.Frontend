@@ -6,7 +6,23 @@ header {
   .text {
     text-align: center;
     margin: 1.5rem 0rem;
-    font-size: $font-size-title;
+    font-size: $title;
     font-weight: 700;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) and (min-height: 768px) {
+  header {
+    .text {
+      font-size: $medium-title;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) and (min-height: 768px) {
+  header {
+    .text {
+      font-size: $large-title;
+    }
   }
 }
