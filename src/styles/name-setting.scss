@@ -29,12 +29,12 @@
   color: $font-color;
   @include main-gradient;
   border: none;
-  border-radius: 1rem;
+  border-radius: 10rem;
   font-size: $font-size-title;
   transition: background-color 0.5s, color 0.5s;
   text-align: center;
   &:hover {
-    border-radius: 1rem;
+    border-radius: 10rem;
     @include hover-gradient;
   }
 }

@@ -20,9 +20,10 @@
   @include main-gradient;
   .chat-input {
     font-size: $font-size-small;
-    height: 30px;
-    border-radius: 5px;
+    text-indent: 1rem;
+    padding-right: 1rem;
+    height: 2rem;
+    border-radius: 1rem;
     flex-grow: 1;
-    overflow: scroll;
   }
 }
