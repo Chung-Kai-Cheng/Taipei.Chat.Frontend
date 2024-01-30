@@ -24,16 +24,17 @@
 }
 
 .start-chatting-btn {
-  margin: 1rem;
-  padding: 1rem;
-  background-color: $main-color;
+  margin: 0 2rem 5rem 2rem;
+  padding: 1.5rem 1rem;
   color: $font-color;
+  @include main-gradient;
   border: none;
   border-radius: 1rem;
   font-size: $font-size-title;
   transition: background-color 0.5s, color 0.5s;
   text-align: center;
   &:hover {
-    background-color: $main-hover-color;
+    border-radius: 1rem;
+    @include hover-gradient;
   }
 }

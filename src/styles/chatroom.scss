@@ -8,7 +8,7 @@
     padding: 1rem;
     line-height: 1.5;
     text-align: right;
-    background-color: $main-color;
+    @include main-gradient;
     color: $font-color;
     border-radius: 10px;
     white-space: normal;
@@ -17,7 +17,7 @@
 
 .type-place {
   padding: 1rem;
-  background-color: $main-color;
+  @include main-gradient;
   .chat-input {
     font-size: $font-size-small;
     height: 30px;

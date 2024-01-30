@@ -1,6 +1,11 @@
-$main-color: DarkSeaGreen;
-$main-hover-color: Aquamarine;
-$font-color: #1f2d3d;
+$main-color: #35bcff;
+@mixin main-gradient {
+  background: linear-gradient(120deg, #5ee7df 0%, #8fd3f4 100%);
+}
+@mixin hover-gradient {
+  background: linear-gradient(120deg, rgb(120, 231, 224) 0%, #afe4ff 100%);
+}
+$font-color: #002a77;
 
 $font-size-title: 2rem;
 $font-size-small-title: 1.5rem;
@@ -13,6 +18,7 @@ html {
 body {
   font-family: "Noto Sans TC", sans-serif;
   height: 100%;
+  color: $font-color;
 }
 
 .cursor-pointer {
@@ -129,11 +135,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-}
-
-header {
-  background-color: $main-color;
-  color: $font-color;
 }
 
 main {
