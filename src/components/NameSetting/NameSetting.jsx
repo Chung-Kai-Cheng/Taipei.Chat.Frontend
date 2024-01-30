@@ -58,6 +58,8 @@ export default function NameSetting() {
         // 若是第二步，且性別已填寫，切換到下一步
         if (gender !== "") {
           setStep(step + 1);
+        } else {
+          alert("Please select your gender!");
         }
         break;
 
@@ -65,6 +67,8 @@ export default function NameSetting() {
         // 若是第三步，且生日已填寫，切換到下一步
         if (birthdate !== "") {
           setStep(step + 1);
+        } else {
+          alert("Please select your birthday!");
         }
         break;
 
@@ -114,7 +118,7 @@ export default function NameSetting() {
         className="start-chatting-btn cursor-pointer"
         onClick={handleStartChatting}
       >
-        <h1>{step < 3 ? "Next" : "Start chatting!"}</h1>
+        <h1>{step < 4 ? "Next" : "Start chatting!"}</h1>
       </div>
     </div>
   );
