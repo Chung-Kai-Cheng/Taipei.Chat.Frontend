@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Cookies from "js-cookie";
 import Header from "./Header/Header";
 import "../styles/chatroom.scss";
+import SendRoundedIcon from "@mui/icons-material/SendRounded";
 
 export default function Chatroom() {
   useEffect(() => {
@@ -47,8 +48,20 @@ export default function Chatroom() {
       <main>
         <div className="chat-space d-flex flex-column align-items-end"></div>
       </main>
-      <footer className="type-place d-flex justify-content-between">
-        <input type="text" placeholder="say something" className="chat-input" />
+      <footer className="type-place">
+        <div className="input-container">
+          <input type="text" placeholder="" className="chat-input" />
+          <span className="icon-container">
+            <button className="send-message-btn cursor-pointer">
+              <SendRoundedIcon
+                sx={{
+                  fontSize: 22,
+                  color: "white",
+                }}
+              />
+            </button>
+          </span>
+        </div>
       </footer>
     </div>
   );

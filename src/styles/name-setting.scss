@@ -7,13 +7,8 @@
   font-size: $second-title;
 }
 
-.radio-male-container,
-.radio-female-container {
+.radio-container {
   margin: 1rem 1rem 0 1rem;
-}
-
-.checkbox-text {
-  font-size: $text;
 }
 
 .generate-result {
@@ -43,9 +38,6 @@
   .title {
     font-size: $medium-second-title;
   }
-  .checkbox-text {
-    font-size: $medium-text;
-  }
   .generate-result {
     font-size: $medium-title;
   }
@@ -58,9 +50,6 @@
 @media screen and (min-width: 1024px) and (min-height: 768px) {
   .title {
     font-size: $large-second-title;
-  }
-  .checkbox-text {
-    font-size: $large-text;
   }
   .generate-result {
     font-size: $large-title;

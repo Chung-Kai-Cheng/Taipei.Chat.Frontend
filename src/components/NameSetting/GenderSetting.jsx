@@ -1,41 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
+import { RadioGroup, FormControlLabel, Radio } from "@mui/material";
 
 export default function GenderSetting({ setGender }) {
-  const [selectedGender, setSelectedGender] = useState("");
-
   const handleGenderChange = (event) => {
     const genderValue = event.target.value;
-    setSelectedGender(genderValue);
     setGender(genderValue);
   };
   return (
     <section className="gender">
       <div className="gender-container">
         <div className="title">Gender</div>
-        <div className="radio-container d-flex justify-content-between">
-          <div className="radio-male-container d-flex flex-column justify-content-center align-items-center">
-            <input
-              type="radio"
-              name="gender"
-              className="cursor-pointer"
+        <RadioGroup
+          aria-labelledby="demo-controlled-radio-buttons-group"
+          name="controlled-radio-buttons-group"
+          onChange={handleGenderChange}
+          row={true}
+        >
+          <div className="radio-container">
+            <FormControlLabel
               value="male"
-              checked={selectedGender === "male"}
-              onChange={handleGenderChange}
+              control={<Radio />}
+              label="Male"
+              labelPlacement="bottom"
             />
-            <div className="checkbox-text">Male</div>
           </div>
-          <div className="radio-female-container d-flex flex-column justify-content-center align-items-center">
-            <input
-              type="radio"
-              name="gender"
-              className="cursor-pointer"
+          <div className="radio-container">
+            <FormControlLabel
               value="female"
-              checked={selectedGender === "female"}
-              onChange={handleGenderChange}
+              control={<Radio />}
+              label="Female"
+              labelPlacement="bottom"
             />
-            <div className="checkbox-text">Female</div>
           </div>
-        </div>
+        </RadioGroup>
       </div>
     </section>
   );

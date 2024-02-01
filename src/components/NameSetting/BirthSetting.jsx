@@ -1,27 +1,26 @@
 import React, { useState } from "react";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
 export default function BirthSetting({ setBirthdate }) {
   const [selectedDate, setSelectedDate] = useState("");
-  const handleDateChange = (e) => {
-    const newDate = e.target.value;
-    setSelectedDate(newDate);
-    setBirthdate(newDate);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setBirthdate(date);
   };
 
   return (
-    <section className="birth">
-      <div className="date-container">
-        <label htmlFor="yearMonth">
-          <div className="title">Date of birth</div>
-          <input
-            type="month"
-            name="yearMonth"
-            value={selectedDate}
-            onChange={handleDateChange}
-            className="cursor-pointer"
-          />
-        </label>
-      </div>
-    </section>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <section className="birth">
+        <div className="title">Date of birth</div>
+        <DesktopDatePicker
+          value={selectedDate}
+          onChange={handleDateChange}
+          views={["year", "month"]}
+        />
+      </section>
+    </LocalizationProvider>
   );
 }
