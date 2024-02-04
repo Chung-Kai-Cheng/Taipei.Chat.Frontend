@@ -28,7 +28,7 @@ export default function NameSetting() {
           let result = res.data.Data;
           console.log(result.token);
           // 將產生的token存入cookie
-          Cookies.set("token", result.token);
+          Cookies.set("chat-token", result.token);
           setGeneratedName(result.name);
         } catch (err) {
           if (err.response && err.response.data.Status == 400) {
@@ -74,7 +74,7 @@ export default function NameSetting() {
 
       case 4:
         // 若是第四步，且已將token值存Cookies，則導向Chatroom
-        if (Cookies.get("token")) {
+        if (Cookies.get("chat-token")) {
           navigate("/Chatroom");
         } else {
           alert("You need to generate the name first!");

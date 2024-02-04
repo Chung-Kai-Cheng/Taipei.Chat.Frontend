@@ -6,12 +6,10 @@ import SendRoundedIcon from "@mui/icons-material/SendRounded";
 
 export default function Chatroom() {
   useEffect(() => {
-    const token = Cookies.get("token");
+    const token = Cookies.get("chat-token");
 
     // 建立WebSocket連接
-    const ws = new WebSocket(
-      `ws://localhost:8080/ws?Sec-WebSocket-Token=${token}`
-    );
+    const ws = new WebSocket(`ws://localhost:8080/ws?chat-token=${token}`);
 
     // 事件處理器 - 連接建立
     ws.onopen = (event) => {
