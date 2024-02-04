@@ -27,8 +27,10 @@ export default function NameSetting() {
           );
           let result = res.data.Data;
           console.log(result.token);
-          // 將產生的token存入cookie
-          Cookies.set("chat-token", result.token);
+          // 將產生的token存入cookie,設定1小時後失效
+          const expirationDate = new Date();
+          expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 10000);
+          Cookies.set("chat-token", result.token, { expires: expirationDate });
           setGeneratedName(result.name);
         } catch (err) {
           if (err.response && err.response.data.Status == 400) {
