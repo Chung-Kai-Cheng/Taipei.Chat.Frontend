@@ -34,8 +34,7 @@ export default function Chatroom() {
 
     // 事件處理器 - 接收訊息
     ws.onmessage = (event) => {
-      //標註為接收的訊息
-      const receivedMessage = { content: event.data, type: "received" };
+      const receivedMessage = event.data;
       // 更新聊天訊息
       setMessages((prevMessages) => [...prevMessages, receivedMessage]);
     };
@@ -71,11 +70,6 @@ export default function Chatroom() {
   const sendMessage = () => {
     if (inputValue.trim() !== "" && webSocket.readyState === WebSocket.OPEN) {
       webSocket.send(inputValue);
-
-      //標註為傳送的訊息
-      const sentMessage = { content: inputValue, type: "sent" };
-      // 更新聊天消息
-      setMessages((prevMessages) => [...prevMessages, sentMessage]);
       // 清空输入框
       setInputValue("");
     }
@@ -87,15 +81,8 @@ export default function Chatroom() {
       <main>
         <div className="chat-space d-flex flex-column">
           {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`chat-box ${message.type}`}
-              //傳送的訊息顯示於右邊，接收的訊息顯示於左邊
-              style={{
-                alignSelf: `flex-${message.type === "sent" ? "end" : "start"}`,
-              }}
-            >
-              {message.content}
+            <div key={index} className="chat-box">
+              {message}
             </div>
           ))}
         </div>
