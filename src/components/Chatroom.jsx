@@ -81,9 +81,26 @@ export default function Chatroom() {
       <main>
         <div className="chat-space d-flex flex-column">
           {messages.map((message, index) => (
-            <div key={index} className="chat-box">
-              {message}
-            </div>
+            <React.Fragment key={index}>
+              <div
+                className={`${
+                  message.split(":")[0] === "你"
+                    ? "your-message-title"
+                    : "other-message-title"
+                }`}
+              >
+                {message.split(":")[0]}
+              </div>
+              <div
+                className={`chat-box ${
+                  message.split(":")[0] === "你"
+                    ? "your-message"
+                    : "other-message"
+                }`}
+              >
+                {message.split(":")[1]}
+              </div>
+            </React.Fragment>
           ))}
         </div>
       </main>
