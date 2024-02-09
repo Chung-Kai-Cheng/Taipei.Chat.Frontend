@@ -35,7 +35,7 @@ export default function NameSetting() {
           Cookies.set("chat-token", result.token, { expires: expirationDate });
           setGeneratedName(result.name);
         } catch (err) {
-          if (err.response && err.response.data.Status == 400) {
+          if (err.response && err.response.data.Status === 400) {
             setGeneratedName(err.response.data.Message);
             console.log(err.response.status);
           } else if (err.response && err.response.data) {
