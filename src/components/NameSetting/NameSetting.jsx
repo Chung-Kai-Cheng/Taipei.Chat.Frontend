@@ -33,6 +33,7 @@ export default function NameSetting() {
           const expirationDate = new Date();
           expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000);
           Cookies.set("chat-token", result.token, { expires: expirationDate });
+          Cookies.set("username", result.name, { expires: expirationDate });
           setGeneratedName(result.name);
         } catch (err) {
           if (err.response && err.response.data.Status === 400) {

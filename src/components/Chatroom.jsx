@@ -10,6 +10,7 @@ export default function Chatroom() {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [webSocket, setWebSocket] = useState(null);
+  const userName = Cookies.get("username");
 
   useEffect(() => {
     const token = Cookies.get("chat-token");
@@ -77,7 +78,7 @@ export default function Chatroom() {
 
   return (
     <div className="container">
-      <Header title="Chatroom" />
+      <Header title={`${userName}'s Chatroom`} />
       <main>
         <div className="chat-space d-flex flex-column">
           {messages.map((message, index) => (
