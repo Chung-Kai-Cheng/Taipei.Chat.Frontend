@@ -20,11 +20,13 @@ export default function NameSetting() {
     // 第四步才判斷是否產生錯誤
     if (step === 4) {
       setGeneratedName("Generating...");
-      const fetchData = async () => {
+      const postData = async () => {
         try {
-          const res = await axios.get(
-            `${baseUrl}/gemini/getNames?birthdate=${birthdate}&gender=${gender}`
-          );
+          const res = await axios.post(`${baseUrl}/gemini/getNames`, {
+            birthdate: birthdate,
+            gender: gender,
+          });
+
           let result = res.data.Data;
           console.log(result.token);
           // 將產生的token存入cookie,設定1小時後失效
@@ -45,7 +47,7 @@ export default function NameSetting() {
         }
       };
 
-      fetchData();
+      postData();
     }
   }, [step]);
 
