@@ -53,7 +53,10 @@ export default function Chatroom() {
     // 在 component 卸載時關閉 WebSocket 連接
     return () => {
       // 移除事件處理器
+      ws.onopen = null;
       ws.onmessage = null;
+      ws.onclose = null;
+      ws.onerror = null;
       // 僅在ws連線已建立才會關閉
       if (ws.readyState === WebSocket.OPEN) {
         ws.close();
