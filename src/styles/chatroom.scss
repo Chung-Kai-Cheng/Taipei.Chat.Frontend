@@ -34,6 +34,7 @@
 
 .type-place {
   padding: 1rem;
+  box-shadow: 0 0rem 1rem 0.25rem rgba(0, 42, 119, 0.25);
   @include main-gradient;
   .input-container {
     position: relative;

@@ -3,6 +3,8 @@
 header {
   @include main-gradient;
   color: $font-color;
+  box-shadow: 0 0rem 1rem 0.25rem rgba(0, 42, 119, 0.25);
+  z-index: 999;
   .text {
     text-align: center;
     margin: 1.5rem 0rem;
