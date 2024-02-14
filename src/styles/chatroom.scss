@@ -4,13 +4,12 @@
     word-wrap: break-word;
     font-size: $text;
     width: fit-content;
-    margin: 1rem;
     padding: 1rem;
     line-height: 1.5;
-    text-align: right;
+    text-align: left;
     @include main-gradient;
     color: $font-color;
-    border-radius: 10px;
+    border-radius: 1rem;
     white-space: normal;
   }
 }
@@ -24,10 +23,12 @@
 }
 
 .your-message {
+  margin: 1rem 1rem 1rem 5rem;
   align-self: flex-end;
 }
 
 .other-message {
+  margin: 1rem 5rem 1rem 1rem;
   align-self: flex-start;
 }
 
