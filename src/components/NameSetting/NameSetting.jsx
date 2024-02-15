@@ -28,7 +28,6 @@ export default function NameSetting() {
           });
 
           let result = res.data.Data;
-          console.log(result.token);
           // 將產生的token存入cookie,設定1小時後失效
           const expirationDate = new Date();
           expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000);
