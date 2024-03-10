@@ -6,50 +6,54 @@ import Header from "../Header/Header";
 import "../../styles/name-setting.scss";
 import BirthSetting from "./BirthSetting";
 import GenderSetting from "./GenderSetting";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
 const baseUrl = "http://localhost:8080";
 
 export default function NameSetting() {
-  const [generatedName, setGeneratedName] = useState("");
+  const [generatedName, setGeneratedName] = useState("Generating...");
   const [gender, setGender] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [step, setStep] = useState(1); // 當前步驟
   const navigate = useNavigate();
 
+  const postData = async () => {
+    setGeneratedName("Generating...");
+    try {
+      const res = await axios.post(`${baseUrl}/gemini/getNames`, {
+        birthdate: birthdate,
+        gender: gender,
+      });
+      let result = res.data.Data;
+      // 將產生的token存入cookie,設定1小時後失效
+      const expirationDate = new Date();
+      expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000);
+      Cookies.set("chat-token", result.token, { expires: expirationDate });
+      Cookies.set("username", result.name, { expires: expirationDate });
+      setGeneratedName(result.name);
+    } catch (err) {
+      if (err.response && err.response.data.Status === 400) {
+        setGeneratedName(err.response.data.Message);
+        console.log(err.response.status);
+      } else if (err.response && err.response.data) {
+        setGeneratedName(err.response.data);
+      } else {
+        console.log(err.message);
+        setGeneratedName(err.message);
+      }
+    }
+  };
+
   useEffect(() => {
     // 第四步才判斷是否產生錯誤
     if (step === 4) {
-      setGeneratedName("Generating...");
-      const postData = async () => {
-        try {
-          const res = await axios.post(`${baseUrl}/gemini/getNames`, {
-            birthdate: birthdate,
-            gender: gender,
-          });
-
-          let result = res.data.Data;
-          // 將產生的token存入cookie,設定1小時後失效
-          const expirationDate = new Date();
-          expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000);
-          Cookies.set("chat-token", result.token, { expires: expirationDate });
-          Cookies.set("username", result.name, { expires: expirationDate });
-          setGeneratedName(result.name);
-        } catch (err) {
-          if (err.response && err.response.data.Status === 400) {
-            setGeneratedName(err.response.data.Message);
-            console.log(err.response.status);
-          } else if (err.response && err.response.data) {
-            setGeneratedName(err.response.data);
-          } else {
-            console.log(err.message);
-            setGeneratedName(err.message);
-          }
-        }
-      };
-
       postData();
     }
   }, [step]);
+
+  const handleGenerate = () => {
+    postData();
+  };
 
   const handleStartChatting = () => {
     switch (step) {
@@ -112,6 +116,12 @@ export default function NameSetting() {
               <div className="generate-container d-flex flex-column justify-content-center align-items-center">
                 <div className="title">Your name is:</div>
                 <div className="generate-result">{generatedName}</div>
+                <div
+                  className="regenerate-name-btn  cursor-pointer"
+                  onClick={handleGenerate}
+                >
+                  <RestartAltIcon fontSize="small" />
+                </div>
               </div>
             </section>
           )}

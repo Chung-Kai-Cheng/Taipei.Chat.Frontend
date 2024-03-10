@@ -13,9 +13,25 @@
 
 .generate-result {
   height: 2rem;
-  margin: 1rem;
+  margin: 1rem 2rem;
   font-size: $title;
   color: $main-color;
+}
+
+.regenerate-name-btn {
+  margin: 2rem 0 0 0;
+  padding: 0.5rem;
+  color: $font-color;
+  @include main-gradient;
+  border: none;
+  border-radius: 10rem;
+  font-size: $text;
+  transition: background-color 0.5s, color 0.5s;
+  text-align: center;
+  &:hover {
+    border-radius: 10rem;
+    @include hover-gradient;
+  }
 }
 
 .start-chatting-btn {
