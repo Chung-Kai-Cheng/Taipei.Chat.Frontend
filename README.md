@@ -13,19 +13,18 @@ Select in your birthdate and gender, use AI to generate a customized name, and f
      
 ![image](https://github.com/njdhdl1223/Taipei.Chat.Frontend/assets/127296290/619782d0-d25e-4f1e-91e7-1bd10a3752bd)
 
-2. Generating... and there you have it!
+2. Generating... and there you have it! (If you don't like your name, click regenerate button to generate again!)
    
-![image](https://github.com/njdhdl1223/Taipei.Chat.Frontend/assets/127296290/3f0ca92e-0d22-430a-874a-32b270fc1e59)
+![image](https://github.com/Chung-Kai-Cheng/Taipei.Chat.Frontend/assets/127296290/e8264486-76d0-41f1-8e9f-3927bc219f9a)
 
 4. Enjoy your time in the chat!
    
-![image](https://github.com/njdhdl1223/Taipei.Chat.Frontend/assets/127296290/fef5899e-0ac7-4cfb-b8ef-0bfe9a89db98)
+![image](https://github.com/Chung-Kai-Cheng/Taipei.Chat.Frontend/assets/127296290/9f6fb772-21c5-4fb8-a3d2-f7cf408de6cb)
 
 - **Error message**
   - <sub>When encountering this error message, please verify your network connection and attempt the operation again.</sub>
   
-![image](https://github.com/njdhdl1223/Taipei.Chat.Frontend/assets/127296290/51bcc624-a1a4-4c11-aac2-a135021e853b)
-
+![image](https://github.com/Chung-Kai-Cheng/Taipei.Chat.Frontend/assets/127296290/6c24476a-a410-41c5-b115-9b3299f5c584)
 
 # Tech Stack
 ![Node.js](https://img.shields.io/badge/-Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
