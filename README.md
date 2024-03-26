@@ -39,7 +39,6 @@ Select in your birthdate and gender, use AI to generate a customized name, and f
      - Generate a name based on birthdate and gender, storing the token and username in Cookies.
      - Utilizes async/await and try/catch to handle asynchronous operations.
      - Establishes and manages a WebSocket connection, processing incoming WebSocket messages.
-     - Periodically checks Cookies for the presence of a token, redirecting to the initial page if the token is not exist.
     
 ![React Router](https://img.shields.io/badge/-React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 
