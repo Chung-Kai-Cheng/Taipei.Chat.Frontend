@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import axios from "axios";
 import Header from "../Header/Header";
 import "../../styles/name-setting.scss";
@@ -25,11 +24,9 @@ export default function NameSetting() {
         gender: gender,
       });
       let result = res.data.Data;
-      // 將產生的token存入cookie,設定1小時後失效
-      const expirationDate = new Date();
-      expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000);
-      Cookies.set("chat-token", result.token, { expires: expirationDate });
-      Cookies.set("username", result.name, { expires: expirationDate });
+      // 將產生的token存入sessionStorage
+      sessionStorage.setItem("chat-token", result.token);
+      sessionStorage.setItem("username", result.name);
       setGeneratedName(result.name);
     } catch (err) {
       if (err.response && err.response.data.Status === 400) {
@@ -81,8 +78,8 @@ export default function NameSetting() {
         break;
 
       case 4:
-        // 若是第四步，且已將token值存Cookies，則導向Chatroom
-        if (Cookies.get("chat-token")) {
+        // 若是第四步，且已將token值存sessionStorage，則導向Chatroom
+        if (sessionStorage.getItem("chat-token")) {
           navigate("/Chatroom");
         } else {
           alert("You need to generate the name first!");
